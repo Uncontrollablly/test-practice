@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can render components 1`] = `
+<div
+  className="App"
+>
+  <span>
+    嘿，陌生人
+  </span>
+</div>
+`;
