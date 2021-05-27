@@ -1,5 +1,5 @@
 import renderer from "react-test-renderer";
-import App from "./App";
+import App from "@/App";
 
 test("can render components", () => {
   const component = renderer.create(<App />);

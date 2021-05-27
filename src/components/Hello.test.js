@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Hello from "./Hello";
+import Hello from "@/components/Hello";
 
 describe("it should show name", () => {
   test("it should show default message if have name prop", () => {
