@@ -7,5 +7,6 @@ exports[`can render components 1`] = `
   <span>
     嘿，陌生人
   </span>
+  加载中...
 </div>
 `;

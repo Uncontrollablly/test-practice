@@ -1,8 +1,8 @@
+import Hello from "@/components/hello/Hello";
 import { render, screen } from "@testing-library/react";
-import Hello from "@/components/Hello";
 
-describe("it should show name", () => {
-  test("it should show default message if have name prop", () => {
+describe("Hello component", () => {
+  test("should show default message if passed name prop", () => {
     // given pass name prop
     const name = "xxx";
     // when render finished
@@ -13,7 +13,7 @@ describe("it should show name", () => {
     ).toBeInTheDocument();
   });
 
-  test("it should show default message if not have name prop", () => {
+  test("should show default message if not passed name prop", () => {
     // given not pass name prop
     // when render finished
     render(<Hello></Hello>);
