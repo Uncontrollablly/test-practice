@@ -16,6 +16,7 @@ describe("User component", () => {
         json: () => Promise.resolve(user),
       })
     );
+
     render(<User id={1}></User>);
 
     await waitFor(() => {
