@@ -8,5 +8,36 @@ exports[`can render components 1`] = `
     嘿，陌生人
   </span>
   加载中...
+  <button
+    data-testid="toggle"
+    onClick={[Function]}
+  >
+    Turn on
+  </button>
+  <div>
+    <address>
+      联系 
+      ，通过
+       
+      <a
+        data-testid="email"
+        href="mailto:undefined"
+      >
+        email
+      </a>
+      或者他们的
+       
+      <a
+        data-testid="site"
+      >
+        网站
+      </a>
+      。
+    </address>
+    <div />
+    <div>
+      Loading...
+    </div>
+  </div>
 </div>
 `;
