@@ -39,5 +39,29 @@ exports[`can render components 1`] = `
       Loading...
     </div>
   </div>
+  <button
+    data-testid={1}
+    onClick={[Function]}
+  >
+    1
+  </button>
+  <button
+    data-testid={2}
+    onClick={[Function]}
+  >
+    2
+  </button>
+  <button
+    data-testid={3}
+    onClick={[Function]}
+  >
+    3
+  </button>
+  <button
+    data-testid={4}
+    onClick={[Function]}
+  >
+    4
+  </button>
 </div>
 `;
