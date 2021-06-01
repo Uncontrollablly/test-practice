@@ -1,74 +1,49 @@
-import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Card from "./card";
 
-let container = null;
 beforeEach(() => {
-  // 创建一个 DOM 元素作为渲染目标
-  container = document.createElement("div");
-  document.body.appendChild(container);
   jest.useFakeTimers();
 });
 
 afterEach(() => {
-  // 退出时进行清理
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
+  jest.runOnlyPendingTimers();
   jest.useRealTimers();
 });
 
 describe("Card component", () => {
-  it("超时后应选择 null", () => {
+  test("超时后应选择 null", () => {
     const onSelect = jest.fn();
-    act(() => {
-      render(<Card onSelect={onSelect} />, container);
-    });
+    render(<Card onSelect={onSelect} />);
 
-    // 提前 100 毫秒执行
-    act(() => {
-      jest.advanceTimersByTime(100);
-    });
+    // // 提前 100 毫秒执行
+    jest.advanceTimersByTime(100);
     expect(onSelect).not.toHaveBeenCalled();
 
     // 然后提前 5 秒执行
-    act(() => {
-      jest.advanceTimersByTime(5000);
-    });
+    jest.advanceTimersByTime(5000);
     expect(onSelect).toHaveBeenCalledWith(null);
   });
 
-  it("移除时应进行清理", () => {
+  test("移除时应进行清理", () => {
     const onSelect = jest.fn();
-    act(() => {
-      render(<Card onSelect={onSelect} />, container);
-    });
-    act(() => {
-      jest.advanceTimersByTime(100);
-    });
+    const { unmount } = render(<Card onSelect={onSelect} />);
+
+    jest.advanceTimersByTime(100);
     expect(onSelect).not.toHaveBeenCalled();
 
     // 卸载应用程序
-    act(() => {
-      render(null, container);
-    });
-    act(() => {
-      jest.advanceTimersByTime(5000);
-    });
+    unmount();
+
+    jest.advanceTimersByTime(5000);
     expect(onSelect).not.toHaveBeenCalled();
   });
 
-  it("应接受选择", () => {
+  test("应接受选择", () => {
     const onSelect = jest.fn();
-    act(() => {
-      render(<Card onSelect={onSelect} />, container);
-    });
+    render(<Card onSelect={onSelect} />);
+    const element = screen.getByTestId("2");
 
-    act(() => {
-      container
-        .querySelector("[data-testid='2']")
-        .dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    });
+    fireEvent.click(element);
 
     expect(onSelect).toHaveBeenCalledWith(2);
   });

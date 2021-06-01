@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 
 export default function Card(props) {
+  const { onSelect } = props;
+
   useEffect(() => {
     const timeoutID = setTimeout(() => {
-      props.onSelect(null);
+      onSelect(null);
     }, 5000);
     return () => {
       clearTimeout(timeoutID);
     };
-  }, [props.onSelect]);
+  }, [onSelect]);
 
   return (
     <>
@@ -16,7 +18,7 @@ export default function Card(props) {
         <button
           key={choice}
           data-testid={choice}
-          onClick={() => props.onSelect(choice)}
+          onClick={() => onSelect(choice)}
         >
           {choice}
         </button>
